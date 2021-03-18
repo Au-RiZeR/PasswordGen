@@ -2,6 +2,8 @@ const characterAmountRange = document.getElementById
 ("characterAmountRange")
 const characterAmountNumber = document.getElementById
 ("characterAmountNumber")
+const includeLowercaseElement = document.getElementById
+("includeLowercase")
 const includeUppercaseElement = document.getElementById
 ("includeUppercase")
 const includeNumbersElement = document.getElementById
@@ -29,15 +31,19 @@ characterAmountRange.addEventListener("input", syncCharacterAmount)
 form.addEventListener("submit", e => {
     e.preventDefault()
     const characterAmount = characterAmountNumber.value
+    const includeLowercase = includeLowercaseElement.checked
+    console.log(includeLowercase)
     const includeUppercase = includeUppercaseElement.checked
+    console.log(includeUppercase)
     const includeNumbers = includeNumbersElement.checked
     const includeSymbols = includeSymbolsElement.checked
-    const password = generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols)
+    const password = generatePassword(characterAmount, includeLowercase, includeUppercase, includeNumbers, includeSymbols)
     passwordDisplay.innerText = password
 } )
 
-function generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols) {
-    let charCodes = LOWER_CHAR_CODES
+function generatePassword(characterAmount, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
+    let charCodes = []
+    if (includeLowercase) charCodes = charCodes.concat(LOWER_CHAR_CODES)
     if (includeUppercase) charCodes = charCodes.concat(UPPER_CHAR_CODES)
     if (includeNumbers) charCodes = charCodes.concat(NUMBER_CHAR_CODES)
     if (includeSymbols) charCodes = charCodes.concat(SYMBOL_CHAR_CODES)
