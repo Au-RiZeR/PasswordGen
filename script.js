@@ -29,6 +29,7 @@ characterAmountNumber.addEventListener("input", syncCharacterAmount)
 characterAmountRange.addEventListener("input", syncCharacterAmount)
 
 form.addEventListener("submit", e => {
+    document.body.style.backgroundImage = "url('safeField.jpg')";
     e.preventDefault()
     const characterAmount = characterAmountNumber.value
     const includeLowercase = includeLowercaseElement.checked
