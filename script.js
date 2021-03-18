@@ -30,6 +30,8 @@ characterAmountRange.addEventListener("input", syncCharacterAmount)
 
 form.addEventListener("submit", e => {
     document.body.style.backgroundImage = "url('safeField.jpg')";
+    var myAudio = new Audio("lockSound.mp3");
+    myAudio.play();
     e.preventDefault()
     const characterAmount = characterAmountNumber.value
     const includeLowercase = includeLowercaseElement.checked
