@@ -4,6 +4,7 @@ let uppercase = false
 let numbers = false
 let symbols = false
 let savedParamaters = 0
+let nullEntry = false
 const form = document.getElementById
 ("passwordGeneratorForm")
 const passwordDisplay = document.getElementById
@@ -44,7 +45,7 @@ function arrayFromLowtoHigh(low, high) {
 form.addEventListener("click", useSaved)
 
 function useSaved() {
-    if(savedParamaters != 0) {
+    if(savedParamaters != 0 && nullEntry == false) {
         if(confirm("Would you like to use your previous parameters? (Use the Cancel button if you do not)")) {
             displayPassword()
         } else {
@@ -77,9 +78,10 @@ function questionaire() {
     if(lowercase == false && uppercase == false && numbers == false && symbols == false) {
         console.log("User wants a password " + passLength + " characters long with no characters.🤔")
         passwordDisplay.innerText = "Please choose characters to use."
-        savedParamaters = 0
+        nullEntry = true
     } else {
     displayPassword()
+    nullEntry = false
     let annoyingNoiseHasRun = savedParamaters
     var myAudio = new Audio("lockSound.mp3")
     if (annoyingNoiseHasRun == 0) {
