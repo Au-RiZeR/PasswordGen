@@ -2,7 +2,7 @@ body {
     background-color: #333;
     background-image: url(field.jpg);
     margin: 0;
-    color: white;
+    color: black;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-    background-color: #006699;
+    background-color: rgb(216, 216, 216);
     padding: 3rem;
     border-radius: 1rem;
     border: 2px solid black;
@@ -22,7 +22,7 @@ body {
 }
 
 .form {
-    display: grid;
+    display: flex;
     grid-template-columns: auto auto;
     row-gap: 1rem;
     column-gap: 3rem;
@@ -33,16 +33,6 @@ body {
 .title {
     margin: 0;
     text-align: center;
-}
-
-.characterAmountContainer {
-    display: flex;
-    align-items: center;
-    grid-column: span 2;
-}
-
-.numberInput {
-    width: 2rem;
 }
 
 .passwordDisplay {
@@ -60,9 +50,8 @@ body {
 }
 
 .btn{
-    grid-column: span 2;
     background-color: red;
-    border: 2px solid white;
+    border: 2px solid #333;
     color: white;
     padding: 0.5rem 1rem;
     font-weight: bold;
