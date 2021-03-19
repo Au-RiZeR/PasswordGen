@@ -3,6 +3,7 @@ let lowercase = false
 let uppercase = false
 let numbers = false
 let symbols = false
+let savedParamaters = 0
 const form = document.getElementById
 ("passwordGeneratorForm")
 const passwordDisplay = document.getElementById
@@ -40,9 +41,23 @@ function arrayFromLowtoHigh(low, high) {
     return array
 }
 
-form.addEventListener("click", revealLCS)
+form.addEventListener("click", useSaved)
 
-function revealLCS() {
+function useSaved() {
+    if(savedParamaters != 0) {
+        if(confirm("Would you like to use your previous parameters? (Use the Cancel button if you do not)")) {
+            displayPassword()
+        } else {
+            reset()
+            questionaire()
+        }
+    } else {
+        reset()
+        questionaire()
+    }
+ }
+
+function questionaire() {
     lengthPrompt()
     if(passLength == null) {
         passLength = 8
@@ -63,22 +78,26 @@ function revealLCS() {
         console.log("User wants a password " + passLength + " characters long with no characters.🤔")
         passwordDisplay.innerText = "Please choose characters to use."
     } else {
-    const password = generatePassword(passLength, lowercase, uppercase, numbers, symbols)
-    passwordDisplay.innerText = password
-    document.body.style.backgroundImage = "url('safeField.jpg')";
-    var myAudio = new Audio("lockSound.mp3");
-    myAudio.play();
-    console.log("Length of password: " + passLength)
-    console.log("Lowercase: " + lowercase)
-    console.log("Uppercase: " + uppercase)
-    console.log("Numbers: " + numbers)
-    console.log("Symbols: " + symbols)
+    displayPassword()
+    savedParamaters++
+    document.body.style.backgroundImage = "url('safeField.jpg')"
+    var myAudio = new Audio("lockSound.mp3")
+    myAudio.play()
+    }
+    }
+}
+
+function reset() {
+    passLength = 8
     lowercase = false
     uppercase = false
     numbers = false
     symbols = false
-    }
-    }
+}
+
+function displayPassword() {
+    const password = generatePassword(passLength, lowercase, uppercase, numbers, symbols)
+    passwordDisplay.innerText = password
 }
 
 function lengthPrompt() {
