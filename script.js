@@ -51,7 +51,7 @@ passwordDisplay.addEventListener("click", copy)
 function useSaved() {
     document.getElementById("passwordDisplay").style.backgroundColor = "white"
     document.getElementById("passwordDisplay").style.color = "initial"
-    if(savedParamaters != 0 && nullEntry == false) {
+    if(savedParamaters != 0 && nullEntry == false && passLength > 8 && passLength < 128) {
         if(confirm("Would you like to use your previous parameters? (Use the Cancel button if you do not)")) {
             displayPassword()
         } else {
@@ -65,7 +65,6 @@ function useSaved() {
  }
 
 function questionaire() {
-    document.getElementById("tooltip").style.display = "none"
     lengthPrompt()
     if(passLength == null) {
         passLength = 8
@@ -85,6 +84,7 @@ function questionaire() {
     if(lowercase == false && uppercase == false && numbers == false && symbols == false) {
         console.log("User wants a password " + passLength + " characters long with no characters.🤔")
         passwordDisplay.innerText = "Please choose characters to use."
+        document.getElementById("tooltip").style.display = "none"
         document.getElementById("passwordDisplay").style.color = "red"
         nullEntry = true
     } else {
@@ -126,6 +126,7 @@ function lengthPrompt() {
             console.log("Cancelled.")
         } else {
             console.log("User can't read.")
+            reset()
             lengthPrompt()
         }
     }
