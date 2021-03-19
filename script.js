@@ -1,15 +1,8 @@
-const characterAmountRange = document.getElementById
-("characterAmountRange")
-const characterAmountNumber = document.getElementById
-("characterAmountNumber")
-const includeLowercaseElement = document.getElementById
-("includeLowercase")
-const includeUppercaseElement = document.getElementById
-("includeUppercase")
-const includeNumbersElement = document.getElementById
-("includeNumbers")
-const includeSymbolsElement = document.getElementById
-("includeSymbols")
+let passLength = 8
+let lowercase = false
+let uppercase = false
+let numbers = false
+let symbols = false
 const form = document.getElementById
 ("passwordGeneratorForm")
 const passwordDisplay = document.getElementById
@@ -24,25 +17,6 @@ const SYMBOL_CHAR_CODES = arrayFromLowtoHigh(33, 47).concat(
     ).concat(
         arrayFromLowtoHigh(123, 126)
     )
-
-characterAmountNumber.addEventListener("input", syncCharacterAmount)
-characterAmountRange.addEventListener("input", syncCharacterAmount)
-
-form.addEventListener("submit", e => {
-    document.body.style.backgroundImage = "url('safeField.jpg')";
-    var myAudio = new Audio("lockSound.mp3");
-    myAudio.play();
-    e.preventDefault()
-    const characterAmount = characterAmountNumber.value
-    const includeLowercase = includeLowercaseElement.checked
-    console.log(includeLowercase)
-    const includeUppercase = includeUppercaseElement.checked
-    console.log(includeUppercase)
-    const includeNumbers = includeNumbersElement.checked
-    const includeSymbols = includeSymbolsElement.checked
-    const password = generatePassword(characterAmount, includeLowercase, includeUppercase, includeNumbers, includeSymbols)
-    passwordDisplay.innerText = password
-} )
 
 function generatePassword(characterAmount, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
     let charCodes = []
@@ -66,8 +40,57 @@ function arrayFromLowtoHigh(low, high) {
     return array
 }
 
-function syncCharacterAmount(e) {
-    const value = e.target.value
-    characterAmountNumber.value = value
-    characterAmountRange.value = value
+form.addEventListener("click", revealLCS)
+
+function revealLCS() {
+    lengthPrompt()
+    if(passLength == null) {
+        passLength = 8
+    } else {
+    if(confirm("Include Lowercase? (Use the Cancel button if you do not)")) {
+        lowercase = true
+    }
+    if(confirm("Include Uppercase? (Use the Cancel button if you do not)")) {
+        uppercase = true
+    }
+    if(confirm("Include Numbers? (Use the Cancel button if you do not)")) {
+        numbers = true
+    } 
+    if(confirm("Include symbols? (Use the Cancel button if you do not)")) {
+        symbols = true
+    }
+    if(lowercase == false && uppercase == false && numbers == false && symbols == false) {
+        console.log("User wants a password " + passLength + " characters long with no characters.🤔")
+        passwordDisplay.innerText = "Please choose characters to use."
+    } else {
+    const password = generatePassword(passLength, lowercase, uppercase, numbers, symbols)
+    passwordDisplay.innerText = password
+    document.body.style.backgroundImage = "url('safeField.jpg')";
+    var myAudio = new Audio("lockSound.mp3");
+    myAudio.play();
+    console.log("Length of password: " + passLength)
+    console.log("Lowercase: " + lowercase)
+    console.log("Uppercase: " + uppercase)
+    console.log("Numbers: " + numbers)
+    console.log("Symbols: " + symbols)
+    lowercase = false
+    uppercase = false
+    numbers = false
+    symbols = false
+    }
+    }
+}
+
+function lengthPrompt() {
+    passLength = prompt("Enter Length of Password from 8 to 128", passLength)
+    if(passLength >= 8 && passLength <= 128) {
+        console.log("The password length fits the criteria.")
+    } else {
+        if(passLength == null) {
+            console.log("Cancelled.")
+        } else {
+            console.log("User can't read.")
+            lengthPrompt()
+        }
+    }
 }

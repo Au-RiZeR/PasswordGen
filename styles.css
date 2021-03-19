@@ -35,10 +35,6 @@ body {
     text-align: center;
 }
 
-label {
-    font-weight: bold;
-}
-
 .characterAmountContainer {
     display: flex;
     align-items: center;
@@ -65,7 +61,7 @@ label {
 
 .btn{
     grid-column: span 2;
-    background-color: transparent;
+    background-color: red;
     border: 2px solid white;
     color: white;
     padding: 0.5rem 1rem;
@@ -75,5 +71,5 @@ label {
 }
 
 .btn:hover {
-    background-color: #ffffff33;
+    background-color: pink;
 }
