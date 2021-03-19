@@ -49,6 +49,10 @@ body {
     border-radius: 0.5rem;
 }
 
+#passwordDisplay{
+    color: gray;
+}
+
 .btn{
     background-color: red;
     border: 2px solid #333;

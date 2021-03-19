@@ -78,15 +78,17 @@ function questionaire() {
     if(lowercase == false && uppercase == false && numbers == false && symbols == false) {
         console.log("User wants a password " + passLength + " characters long with no characters.🤔")
         passwordDisplay.innerText = "Please choose characters to use."
+        document.getElementById("passwordDisplay").style.color = "red"
         nullEntry = true
     } else {
-    displayPassword()
-    nullEntry = false
-    let annoyingNoiseHasRun = savedParamaters
-    var myAudio = new Audio("lockSound.mp3")
-    if (annoyingNoiseHasRun == 0) {
-        myAudio.play()
-        document.body.style.backgroundImage = "url('safeField.jpg')"
+        document.getElementById("passwordDisplay").style.color = "black"
+        displayPassword()
+        nullEntry = false
+        let annoyingNoiseHasRun = savedParamaters
+        var myAudio = new Audio("lockSound.mp3")
+        if (annoyingNoiseHasRun == 0) {
+            myAudio.play()
+            document.body.style.backgroundImage = "url('safeField.jpg')"
     }
     savedParamaters++
     }
