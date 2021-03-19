@@ -79,10 +79,13 @@ function questionaire() {
         passwordDisplay.innerText = "Please choose characters to use."
     } else {
     displayPassword()
-    savedParamaters++
-    document.body.style.backgroundImage = "url('safeField.jpg')"
+    let annoyingNoiseHasRun = savedParamaters
     var myAudio = new Audio("lockSound.mp3")
-    myAudio.play()
+    if (annoyingNoiseHasRun == 0) {
+        myAudio.play()
+        document.body.style.backgroundImage = "url('safeField.jpg')"
+    }
+    savedParamaters++
     }
     }
 }
