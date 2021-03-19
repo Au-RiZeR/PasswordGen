@@ -21,6 +21,14 @@ body {
     flex-direction: column;
 }
 
+h5 {
+    display: none;
+    max-height: min-content;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
 .form {
     display: flex;
     grid-template-columns: auto auto;
@@ -47,6 +55,10 @@ body {
     align-items: center;
     word-break: break-all;
     border-radius: 0.5rem;
+}
+
+#hidden {
+    display: none;
 }
 
 #passwordDisplay{

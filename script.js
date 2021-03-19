@@ -5,6 +5,8 @@ let numbers = false
 let symbols = false
 let savedParamaters = 0
 let nullEntry = false
+const hidden = document.getElementById
+("hidden")
 const form = document.getElementById
 ("passwordGeneratorForm")
 const passwordDisplay = document.getElementById
@@ -44,7 +46,11 @@ function arrayFromLowtoHigh(low, high) {
 
 form.addEventListener("click", useSaved)
 
+passwordDisplay.addEventListener("click", copy)
+
 function useSaved() {
+    document.getElementById("passwordDisplay").style.backgroundColor = "white"
+    document.getElementById("passwordDisplay").style.color = "initial"
     if(savedParamaters != 0 && nullEntry == false) {
         if(confirm("Would you like to use your previous parameters? (Use the Cancel button if you do not)")) {
             displayPassword()
@@ -59,6 +65,7 @@ function useSaved() {
  }
 
 function questionaire() {
+    document.getElementById("tooltip").style.display = "none"
     lengthPrompt()
     if(passLength == null) {
         passLength = 8
@@ -83,6 +90,7 @@ function questionaire() {
     } else {
         document.getElementById("passwordDisplay").style.color = "black"
         displayPassword()
+        document.getElementById("tooltip").style.display = "block"
         nullEntry = false
         let annoyingNoiseHasRun = savedParamaters
         var myAudio = new Audio("lockSound.mp3")
@@ -106,6 +114,7 @@ function reset() {
 function displayPassword() {
     const password = generatePassword(passLength, lowercase, uppercase, numbers, symbols)
     passwordDisplay.innerText = password
+    hidden.value = password
 }
 
 function lengthPrompt() {
@@ -121,3 +130,14 @@ function lengthPrompt() {
         }
     }
 }
+
+function copy() {
+    if (lowercase != false && uppercase != false && numbers != false && symbols != false) {
+    var copyText = document.getElementById("hidden");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    document.getElementById("passwordDisplay").style.backgroundColor = "green"
+    document.getElementById("passwordDisplay").style.color = "white"
+        }
+    }
