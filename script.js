@@ -134,10 +134,13 @@ function lengthPrompt() {
 function copy() {
     if (lowercase != false && uppercase != false && numbers != false && symbols != false) {
     var copyText = document.getElementById("hidden");
+    document.getElementById("hidden").style.display = "block"
     copyText.select();
     copyText.setSelectionRange(0, 99999)
     document.execCommand("copy");
+    document.getElementById("hidden").style.display = "none"
     document.getElementById("passwordDisplay").style.backgroundColor = "green"
     document.getElementById("passwordDisplay").style.color = "white"
+    
         }
     }
