@@ -77,6 +77,7 @@ function questionaire() {
     if(lowercase == false && uppercase == false && numbers == false && symbols == false) {
         console.log("User wants a password " + passLength + " characters long with no characters.🤔")
         passwordDisplay.innerText = "Please choose characters to use."
+        savedParamaters = 0
     } else {
     displayPassword()
     let annoyingNoiseHasRun = savedParamaters
