@@ -51,7 +51,7 @@ passwordDisplay.addEventListener("click", copy)
 function useSaved() {
     document.getElementById("passwordDisplay").style.backgroundColor = "white"
     document.getElementById("passwordDisplay").style.color = "initial"
-    if(savedParamaters != 0 && nullEntry == false && passLength > 8 && passLength < 128) {
+    if(savedParamaters != 0 && nullEntry == false && passLength >= 8 && passLength <= 128) {
         if(confirm("Would you like to use your previous parameters? (Use the Cancel button if you do not)")) {
             displayPassword()
         } else {
