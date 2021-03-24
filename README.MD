@@ -7,5 +7,7 @@ This is a Password Generator which uses Javascript to create a secure password f
 3. After the length prompt you'll recieve a series of prompts asking for your paramaters, use the cancel button if you do not want the asked parameter
 4. ~~Profit~~ Watch the Javascript do it's magic while it returns your brand new secure password in the top password display box.
 5. Use the generated password as a password for your deepest desires (or just whatever new service you're signing up to).
+## Deployed App
+https://au-rizer.github.io/PasswordGen/
 ## Aknowledgements and Authors
 The Man, The Myth, The Mistake - Ricky Gobby.
