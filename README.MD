@@ -9,5 +9,6 @@ This is a Password Generator which uses Javascript to create a secure password f
 5. Use the generated password as a password for your deepest desires (or just whatever new service you're signing up to).
 ## Deployed App
 https://au-rizer.github.io/PasswordGen/
+<img width="756" alt="Screen Shot 2021-03-24 at 8 36 57 am" src="https://user-images.githubusercontent.com/32904314/112236769-29cbfd80-8c7c-11eb-9043-5e383c4c3b5b.png">
 ## Aknowledgements and Authors
 The Man, The Myth, The Mistake - Ricky Gobby.
